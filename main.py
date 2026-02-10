@@ -3,22 +3,23 @@ from src.data_manager import DataManager
 import time
 
 def main():
-    print("🤖 --- INICIANDO BOT DE GENERACIÓN DE LEADS ---")
+    """
+    Main entry point for the Lead Generation Bot.
+    Orchestrates the scraping and data processing workflow.
+    """
+    print("🤖 --- STARTING LEAD GENERATION BOT ---")
     start_time = time.time()
 
-    # PASO 1: EXTRAER (Scraping)
-    # Llamamos a la función que creaste en la Fase 2
+    # STEP 1: EXTRACT (Scraping)
     raw_leads = get_real_estate_leads()
 
-    # PASO 2: TRANSFORMAR Y CARGAR (ETL)
-    # Instanciamos nuestra clase de datos
+    # STEP 2: TRANSFORM & LOAD (ETL)
     dm = DataManager()
-    # Le pasamos los datos sucios para que los limpie y guarde
     dm.process_and_save(raw_leads)
 
     end_time = time.time()
     duration = round(end_time - start_time, 2)
-    print(f"🏁 Proceso completado exitosamente en {duration} segundos.")
+    print(f"🏁 Process completed successfully in {duration} seconds.")
 
 if __name__ == "__main__":
     main()
